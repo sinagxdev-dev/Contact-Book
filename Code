@@ -1,0 +1,9 @@
+def menu():
+    print("--Welcome to Contact Book--")
+    print("1. Add Contact")
+    print("2. View COntact")
+    print("3. Search Contact")
+    print("4. Update Contact")
+    print("5. Delete Contact")
+    print("6. Exit")
+
