@@ -6,4 +6,15 @@ def menu():
     print("4. Update Contact")
     print("5. Delete Contact")
     print("6. Exit")
+    choice = input("Enter your choice: 1-6 ")
 
+def main()
+    if choice == 1:
+    elif choice == 2:
+    elif choice == 3:
+    elif choice == 4:
+    elif chocie == 5:
+    else:
+        print("Thank you for using Contact Book, Goodbye!)
+
+    
