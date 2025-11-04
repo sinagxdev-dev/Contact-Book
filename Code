@@ -1,12 +1,44 @@
 def menu():
     print("--Welcome to Contact Book--")
     print("1. Add Contact")
-    print("2. View COntact")
+    print("2. View Contact")
     print("3. Search Contact")
     print("4. Update Contact")
     print("5. Delete Contact")
     print("6. Exit")
     choice = input("Enter your choice: 1-6 ")
+
+def add_contact():
+    '''Add Contact '''
+    name = input("Enter your name: ").lower.strip()
+    phone_number = int(input("Enter your phone number: ")).strip()
+    email = input("Enter your email: ex. sinagdev@gmail.com").lower().strip()
+
+    if not name:
+        print("You must input name")
+        return 
+    
+    if not phone_number.isdigit() and phone_number != " ":
+        print("Your number must be digit and cannot be empty")
+        return 
+    
+    if email (("@" not in email and ".")) and (email != " "):
+        print("Your email must have @, . and cannot be empty")
+        return 
+    
+    if name in add_contact:
+        print(f' Your name is {name} already exist')
+        return
+
+    add_contact[name] = {
+        "Name": name,
+        "Phone": phone_number,
+        "Email": email
+    }
+    
+    print(f'Hey {name} your information is stored succesfully')
+    print(f'Phone: {phone_number if phone_number else 'N/A'}')
+    print(f'Email: {email if email else 'N/A'}')
 
 def main()
     if choice == 1:
