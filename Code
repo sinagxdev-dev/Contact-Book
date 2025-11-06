@@ -40,6 +40,24 @@ def add_contact():
     print(f'Phone: {phone_number if phone_number else 'N/A'}')
     print(f'Email: {email if email else 'N/A'}')
 
+
+
+def view_contact(add_contact):
+     if not add_contact:
+        print("No contacts found.")
+        return
+count = 0
+for name, info in add_contact.items():
+        count += 1
+        print(f"\n{count}. {name}")
+        print(f"   Phone: {info['Phone']}")
+        print(f"   Email: {info['Email']}")
+        print(f"   Notes: {info['Notes']}")
+        print("   ---------------------------")
+
+  
+print(f"\nTotal Contacts: {count}")
+
 def main()
     if choice == 1:
     elif choice == 2:
