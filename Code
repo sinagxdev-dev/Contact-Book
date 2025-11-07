@@ -30,7 +30,7 @@ def add_contact():
         print(f' Your name is {name} already exist')
         return
 
-    add_contact[name] = {
+    add_contact.append([name]) = {
         "Name": name,
         "Phone": phone_number,
         "Email": email
@@ -40,8 +40,20 @@ def add_contact():
     print(f'Phone: {phone_number if phone_number else 'N/A'}')
     print(f'Email: {email if email else 'N/A'}')
 
+def view_contact(add_contact):
+    '''View Contact'''
+    if not add_contact:
+        print("No Contacts found")
+    else:
+        print("Contact List")
+        for i, t in enumerate (add_contact, start = 1):
+           print(f"{i}. {t['name']}: ₱{t['phone']:.2f} ({t['email']})")
 
-
+    number_of_contacts = len(add_contact)
+    print(f'Total Contacts: {number_of_contacts}')
+    
+    return
+    
 def view_contact(add_contact):
      if not add_contact:
         print("No contacts found.")
@@ -58,13 +70,22 @@ for name, info in add_contact.items():
   
 print(f"\nTotal Contacts: {count}")
 
-def main()
-    if choice == 1:
-    elif choice == 2:
-    elif choice == 3:
-    elif choice == 4:
-    elif chocie == 5:
-    else:
-        print("Thank you for using Contact Book, Goodbye!)
 
-    
+def main ():
+    contact = {}
+    while True:
+print("--Welcome to Contact Book--")
+print("1. Add Contact")
+print("2. View Contact")
+print("3. Search Contact")
+print("4. Update Contact")
+print("5. Delete Contact")
+print("6. Exit")
+choice = input("Enter your choice: 1-6 ")
+
+if choice == 1 :
+    add_contact(contact)
+
+if choice == 2 :
+    add_view(contact)
+        
