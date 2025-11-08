@@ -86,6 +86,21 @@ choice = input("Enter your choice: 1-6 ")
 if choice == 1 :
     add_contact(contact)
 
-if choice == 2 :
+elif choice == 2 :
     add_view(contact)
+
+elif choice == 3 :
+   search_contact(contact)
+
+elif choice == 4: 
+    delete_contact(contact)
+
+elif choice == 5:
+    print("Thank you for using Contact Book! Now exiting!! Byee!!")
+
+else: 
+    print("Invalid input)
+
+    
+
         
