@@ -101,6 +101,38 @@ elif choice == 5:
 else: 
     print("Invalid input)
 
+
+elif choice == 4: 
+    delete_contact(contact)
+
+elif choice == 5:
+    print("Thank you for using Contact Book! Now exiting!! Byee!!")
+
+else: 
+    print("Invalid input)elif choice == 4: 
+    delete_contact(contact)
+
+elif choice == 5:
+    print("Thank you for using Contact Book! Now exiting!! Byee!!")
+
+else: 
+    print("Invalid input)
+elif choice == 4: 
+    delete_contact(contact)
+
+elif choice == 5:
+    print("Thank you for using Contact Book! Now exiting!! Byee!!")
+
+else: 
+    print("Invalid input)elif choice == 4: 
+    delete_contact(contact)
+
+elif choice == 5:
+    print("Thank you for using Contact Book! Now exiting!! Byee!!")
+
+else: 
+    print("Invalid input)
+
     
 
         
