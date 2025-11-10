@@ -40,18 +40,7 @@ def add_contact():
     print(f'Phone: {phone_number if phone_number else 'N/A'}')
     print(f'Email: {email if email else 'N/A'}')
 
-def view_contact(add_contact):
-    '''View Contact'''
-    if not add_contact:
-        print("No Contacts found")
-    else:
-        print("Contact List")
-        for i, t in enumerate (add_contact, start = 1):
-           print(f"{i}. {t['name']}: ₱{t['phone']:.2f} ({t['email']})")
 
-    number_of_contacts = len(add_contact)
-    print(f'Total Contacts: {number_of_contacts}')
-    
     return
     
 def view_contact(add_contact):
@@ -70,6 +59,30 @@ for name, info in add_contact.items():
   
 print(f"\nTotal Contacts: {count}")
 
+def search_contact(contacts):
+    """Search for a contact by name."""
+    print("\n=== SEARCH CONTACT ===")
+
+    if not contacts:
+        print("No contacts to search.")
+        return
+
+    search_name = input("Enter the name to search: ").strip()
+    found = False
+
+    for name, info in contacts.items():
+        if search_name.lower() == name.lower():  # case-insensitive match
+            print("\nContact found!")
+            print(f"Name: {name}")
+            print(f"Phone: {info['Phone']}")
+            print(f"Email: {info['Email']}")
+            print(f"Notes: {info['Notes']}")
+            found = True
+            break
+    if not found:
+        print("Contact not found.")
+
+    input("\nPress Enter to return to the main menu...")
 
 def main ():
     contact = {}
