@@ -1,152 +1,150 @@
-def menu():
-    print("--Welcome to Contact Book--")
-    print("1. Add Contact")
-    print("2. View Contact")
-    print("3. Search Contact")
-    print("4. Update Contact")
-    print("5. Delete Contact")
-    print("6. Exit")
-    choice = input("Enter your choice: 1-6 ")
-
-def add_contact():
-    '''Add Contact '''
-    name = input("Enter your name: ").lower.strip()
-    phone_number = int(input("Enter your phone number: ")).strip()
-    email = input("Enter your email: ex. sinagdev@gmail.com").lower().strip()
+def add_contact(contacts):
+    name = input("Enter name: ").strip().lower()
+    phone = input("Enter phone number: ").strip()
+    email = input("Enter email: ").strip().lower()
 
     if not name:
-        print("You must input name")
-        return 
-    
-    if not phone_number.isdigit() and phone_number != " ":
-        print("Your number must be digit and cannot be empty")
-        return 
-    
-    if email (("@" not in email and ".")) and (email != " "):
-        print("Your email must have @, . and cannot be empty")
-        return 
-    
-    if name in add_contact:
-        print(f' Your name is {name} already exist')
+        print("Name cannot be empty.")
         return
 
-    add_contact.append([name]) = {
-        "Name": name,
-        "Phone": phone_number,
+    if not phone.isdigit():
+        print("Phone number must contain digits only.")
+        return
+
+    if "@" not in email or "." not in email:
+        print("Invalid email format.")
+        return
+
+    if name in contacts:
+        print("This contact already exists.")
+        return
+
+    contacts[name] = {
+        "Phone": phone,
         "Email": email
     }
-    
-    print(f'Hey {name} your information is stored succesfully')
-    print(f'Phone: {phone_number if phone_number else 'N/A'}')
-    print(f'Email: {email if email else 'N/A'}')
+
+    print(f"\nContact '{name}' added successfully!")
 
 
-    return
-    
-def view_contact(add_contact):
-     if not add_contact:
+def view_contacts(contacts):
+    print("\n=== VIEW CONTACTS ===")
+
+    if not contacts:
         print("No contacts found.")
         return
-count = 0
-for name, info in add_contact.items():
+
+    count = 0
+    for name, info in contacts.items():
         count += 1
-        print(f"\n{count}. {name}")
+        print(f"\n{count}. Name: {name.title()}")
         print(f"   Phone: {info['Phone']}")
         print(f"   Email: {info['Email']}")
-        print(f"   Notes: {info['Notes']}")
-        print("   ---------------------------")
+        print("---------------------------")
 
-  
-print(f"\nTotal Contacts: {count}")
+    print(f"\nTotal Contacts: {count}")
+
 
 def search_contact(contacts):
-    """Search for a contact by name."""
     print("\n=== SEARCH CONTACT ===")
 
     if not contacts:
         print("No contacts to search.")
         return
 
-    search_name = input("Enter the name to search: ").strip()
+    search_name = input("Enter name to search: ").strip().lower()
     found = False
 
     for name, info in contacts.items():
-        if search_name.lower() == name.lower():  # case-insensitive match
+        if search_name == name:
             print("\nContact found!")
-            print(f"Name: {name}")
+            print(f"Name: {name.title()}")
             print(f"Phone: {info['Phone']}")
             print(f"Email: {info['Email']}")
-            print(f"Notes: {info['Notes']}")
             found = True
             break
+
     if not found:
         print("Contact not found.")
 
-    input("\nPress Enter to return to the main menu...")
 
-def main ():
-    contact = {}
+def update_contact(contacts):
+    print("\n=== UPDATE CONTACT ===")
+
+    if not contacts:
+        print("No contacts to update.")
+        return
+
+    name = input("Enter name to update: ").strip().lower()
+
+    if name not in contacts:
+        print("Contact not found.")
+        return
+
+    phone = input("Enter new phone number (leave blank to keep current): ").strip()
+    email = input("Enter new email (leave blank to keep current): ").strip()
+
+    if phone:
+        if not phone.isdigit():
+            print("Invalid phone number.")
+            return
+        contacts[name]["Phone"] = phone
+
+    if email:
+        if "@" not in email or "." not in email:
+            print("Invalid email format.")
+            return
+        contacts[name]["Email"] = email
+
+    print(f"Contact '{name}' updated successfully!")
+
+
+def delete_contact(contacts):
+    print("\n=== DELETE CONTACT ===")
+
+    if not contacts:
+        print("No contacts to delete.")
+        return
+
+    name = input("Enter name to delete: ").strip().lower()
+
+    if name in contacts:
+        del contacts[name]
+        print(f"Contact '{name}' deleted successfully.")
+    else:
+        print("Contact not found.")
+
+
+def main():
+    contacts = {}
+
     while True:
-print("--Welcome to Contact Book--")
-print("1. Add Contact")
-print("2. View Contact")
-print("3. Search Contact")
-print("4. Update Contact")
-print("5. Delete Contact")
-print("6. Exit")
-choice = input("Enter your choice: 1-6 ")
+        print("\n-- WELCOME TO CONTACT BOOK --")
+        print("1. Add Contact")
+        print("2. View Contacts")
+        print("3. Search Contact")
+        print("4. Update Contact")
+        print("5. Delete Contact")
+        print("6. Exit")
 
-if choice == 1 :
-    add_contact(contact)
+        choice = input("Enter your choice (1-6): ").strip()
 
-elif choice == 2 :
-    add_view(contact)
+        if choice == "1":
+            add_contact(contacts)
+        elif choice == "2":
+            view_contacts(contacts)
+        elif choice == "3":
+            search_contact(contacts)
+        elif choice == "4":
+            update_contact(contacts)
+        elif choice == "5":
+            delete_contact(contacts)
+        elif choice == "6":
+            print("Thank you for using Contact Book. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a number from 1 to 6.")
 
-elif choice == 3 :
-   search_contact(contact)
-
-elif choice == 4: 
-    delete_contact(contact)
-
-elif choice == 5:
-    print("Thank you for using Contact Book! Now exiting!! Byee!!")
-
-else: 
-    print("Invalid input)
-
-
-elif choice == 4: 
-    delete_contact(contact)
-
-elif choice == 5:
-    print("Thank you for using Contact Book! Now exiting!! Byee!!")
-
-else: 
-    print("Invalid input)elif choice == 4: 
-    delete_contact(contact)
-
-elif choice == 5:
-    print("Thank you for using Contact Book! Now exiting!! Byee!!")
-
-else: 
-    print("Invalid input)
-elif choice == 4: 
-    delete_contact(contact)
-
-elif choice == 5:
-    print("Thank you for using Contact Book! Now exiting!! Byee!!")
-
-else: 
-    print("Invalid input)elif choice == 4: 
-    delete_contact(contact)
-
-elif choice == 5:
-    print("Thank you for using Contact Book! Now exiting!! Byee!!")
-
-else: 
-    print("Invalid input)
 
 if __name__ == "__main__":
     main()
-
-        
